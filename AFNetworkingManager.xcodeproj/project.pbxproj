@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8EB661541AA1AA960063391B /* FileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB661531AA1AA960063391B /* FileSystemManager.m */; };
 		B1D1755C1AA0B5A000036557 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1755B1AA0B5A000036557 /* main.m */; };
 		B1D1755F1AA0B5A000036557 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1755E1AA0B5A000036557 /* AppDelegate.m */; };
 		B1D175621AA0B5A000036557 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D175611AA0B5A000036557 /* ViewController.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8EB661521AA1AA960063391B /* FileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemManager.h; sourceTree = "<group>"; };
+		8EB661531AA1AA960063391B /* FileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemManager.m; sourceTree = "<group>"; };
 		B1D175561AA0B5A000036557 /* AFNetworkingManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFNetworkingManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D1755A1AA0B5A000036557 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1D1755B1AA0B5A000036557 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 			children = (
 				B1D1759D1AA0B5C500036557 /* AFSharedClient.h */,
 				B1D1759E1AA0B5C500036557 /* AFSharedClient.m */,
+				8EB661521AA1AA960063391B /* FileSystemManager.h */,
+				8EB661531AA1AA960063391B /* FileSystemManager.m */,
 			);
 			path = AFShared;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 			files = (
 				B1D175931AA0B5B500036557 /* AFHTTPRequestOperation.m in Sources */,
 				B1D175621AA0B5A000036557 /* ViewController.m in Sources */,
+				8EB661541AA1AA960063391B /* FileSystemManager.m in Sources */,
 				B1D175941AA0B5B500036557 /* AFHTTPRequestOperationManager.m in Sources */,
 				B1D175961AA0B5B500036557 /* AFNetworkReachabilityManager.m in Sources */,
 				B1D1759A1AA0B5B500036557 /* AFURLResponseSerialization.m in Sources */,
@@ -490,6 +496,7 @@
 				B1D1757B1AA0B5A000036557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B1D1757C1AA0B5A000036557 /* Build configuration list for PBXNativeTarget "AFNetworkingManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +505,7 @@
 				B1D1757E1AA0B5A000036557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

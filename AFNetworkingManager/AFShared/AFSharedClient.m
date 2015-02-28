@@ -30,9 +30,17 @@
         if(_systemVersion >= 7.0){
             AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
             self.sessionManager = sessionManager;
-            AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-            responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html", @"application/json",@"text/plain",nil];
-            self.sessionManager.responseSerializer = responseSerializer;
+            
+            AFJSONResponseSerializer *jsonSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+            jsonSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"image/jpeg", nil];
+            
+            AFHTTPResponseSerializer *serialier = [AFHTTPResponseSerializer serializer];
+            
+            
+            NSArray *comSerializers = @[jsonSerializer,serialier];
+            AFCompoundResponseSerializer *comResponser = [AFCompoundResponseSerializer compoundSerializerWithResponseSerializers:comSerializers];
+            
+            self.sessionManager.responseSerializer = comResponser;
         }else{
             AFHTTPRequestOperationManager *requestManager = [[AFHTTPRequestOperationManager alloc] init];
             _requestManager = requestManager;
@@ -41,6 +49,7 @@
     }
     return self;
 }
+
 - (void)addPOST:(NSString *)urlstring
       paragrams:(NSDictionary *)paragrams
         success:(void (^)(NSDictionary * responseObject))success
@@ -60,4 +69,36 @@
         }];
     }
 }
+
+- (void)addGET:(NSString *)urlstring
+     paragrams:(NSDictionary *)paragrams
+       success:(void (^)(NSDictionary * responseObject))success
+       failure:(void (^)(NSError *error))failure{
+    
+    if (_systemVersion >= 7.0) {
+        [self.sessionManager GET:urlstring parameters:paragrams success:^(NSURLSessionDataTask *task, id responseObject) {
+            success(responseObject);
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            failure(error);
+        }];
+    }else{
+        [self.requestManager GET:urlstring parameters:paragrams success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            success(responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            failure(error);
+        }];
+    }
+}
+
+- (void)downLoadResource:(NSString *)resourceURL cachedDirectory:(NSString *)directoryPath{
+    
+    [[AFSharedClient sharedManager] addGET:resourceURL paragrams:nil success:^(NSDictionary *responseObject) {
+        if([responseObject isKindOfClass:[NSData class]]){
+            UIImage *image = [UIImage imageWithData:(NSData *)responseObject];
+        }
+    } failure:^(NSError *error) {
+        NSLog([error description],nil);
+    }];
+}
+
 @end

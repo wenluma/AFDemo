@@ -18,4 +18,9 @@
       paragrams:(NSDictionary *)paragrams
         success:(void (^)(NSDictionary * responseObject))success
         failure:(void (^)(NSError *error))failure;
+
+- (void)addGET:(NSString *)urlstring
+     paragrams:(NSDictionary *)paragrams
+       success:(void (^)(NSDictionary * responseObject))success
+       failure:(void (^)(NSError *error))failure;
 @end

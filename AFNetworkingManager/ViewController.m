@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "AFSharedClient.h"
+#import "FileSystemManager.h"
+
 
 @interface ViewController ()
 
@@ -18,11 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [[AFSharedClient sharedManager] addPOST:@"http://115.28.208.210:8080/ishow/getmenu?userid=15050191718" paragrams:nil success:^(NSDictionary *responseObject) {
-        NSLog([responseObject description],nil);
-    } failure:^(NSError *error) {
-        NSLog([error description],nil);
-    }];
+    [[FileSystemManager sharedManager] initSystem];
 }
 
 - (void)didReceiveMemoryWarning {
