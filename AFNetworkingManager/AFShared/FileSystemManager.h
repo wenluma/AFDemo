@@ -15,10 +15,14 @@ typedef NS_ENUM(NSUInteger, GLFileType){
 };
 
 @interface FileSystemManager : NSObject
+@property (assign, nonatomic,readonly) BOOL finished;
+@property (strong, nonatomic,readonly) NSMutableArray *leftMenu;
 + (instancetype)sharedManager;
 - (void)initSystem;
+- (NSArray *)relationInfoWithLeftMenuItem:(NSUInteger)index;
+- (NSArray *)relationInfoWithObject:(NSArray *)inputAry withName:(NSString *)name;
 
 + (void)writeToFileDirWithObject:(id)data fileName:(NSString *)fileName fileType:(GLFileType)type;
 + (BOOL)isExistAtDocumentWithFileName:(NSString *)filename fileType:(GLFileType)type;
-
++ (NSString *)imagePathWithName:(NSString *)imageName;
 @end
